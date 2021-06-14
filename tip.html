@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="ISO-8859-1"> 
+  <title>Tip Calculator Using JavaScript</title>
+  <script src = "http://code.jquery.com/jquery-latest.min.js"></script>
+  <style>
+    #heading{
+      text-align:center;
+      color:blue;
+      box-shadow: 0 0 0.2em black;
+      padding:0.4em;
+      text-decoration: underline;
+      font-size: 3rem;
+      text-shadow: 3px 2px rgb(110, 93, 96);
+      background-color : rgb(199, 196, 196);
+    }
+    #right{
+      height: 100%;
+      width: 50%;
+      background-color:rgb(252, 169, 110);
+      z-index: 1;
+      position:fixed;
+      right: 0;
+      top:25%;
+      overflow-x: hidden;
+      box-shadow: 0 0 0.2em black;
+      padding-top: 20px;
+    }
+    #left{
+      box-shadow: 0 0 0.2em black;
+      float:left;
+      width:50%;
+    }
+    .leftNav{
+      box-shadow: 0 0 0.5em rgba(32, 16, 16, 0.445);
+      background-color: rgb(104, 192, 164);
+    }
+    .l{
+      font-size:2rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .mid{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    #tipp{
+      font-size:3rem;
+      font-weight:bold;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    #topp{
+      font-size:3rem;
+      font-weight:bold;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    input{
+      font-weight:bold;
+      }
+  
+
+  </style>
+</head>
+
+<body>
+  <div id="container">
+  <h1 id="heading">Tip Calculator</h1>
+  <div id="left">
+  <div class="leftNav"><br>
+    <label class="l">Bill Amount</label><br><br>
+    <div class="mid">
+    <input type="text" id="billTotal" style="height: 30px; width:280px;"><br><br>
+    </div><br>
+  </div><hr>
+  <div class="leftNav"><br>
+    <label class="l">Tip %</label><br><br>
+    <div class="mid">
+    <input type="text" id="tipInput" style="height: 30px; width:280px;"><br><br>
+    </div><br>
+    <span id="tipOutput"></span>
+  </div><hr>
+  <div class="leftNav"><br>
+    <label class="l">Number of People</label><br><br>
+    <div class="mid">
+    <input type="text" id="splitInput" style="height: 30px; width:280px;"><br><br>
+  </div><br>
+  <span id="splitOutput"></span>
+  </div>
+  </div>
+  <div id="right">
+    <div>
+      <label class="l">Tip(per person)</label><br><br>
+      <span id="tipp"></span><br><br><br><br><br>
+    </div>
+    <hr color="black"><hr color="black">
+    <div>
+      <label class="l">Total Bill(per person)</label><br><br>
+      <span id="topp"></span><br><br>
+    </div>
+  </div>
+  </div>
+
+<script>
+  document.getElementById('container').oninput = function cal() {
+  var bill = Number(document.getElementById('billTotal').value);
+  var tipPercent = document.getElementById('tipInput').value;
+  var splitBill = document.getElementById('splitInput').value;
+  var tipValue = bill * (tipPercent / 100);
+  var newBillEach = (bill + tipValue) / splitBill;
+  var tipEach = tipValue / splitBill;
+
+  document.getElementById('topp').innerHTML = " $" + newBillEach.toFixed(2);
+  document.getElementById('tipp').innerHTML = " $" + tipEach.toFixed(2);
+}
+
+</script>
+
+
+</body>
+</html>
